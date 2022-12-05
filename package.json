@@ -1,0 +1,52 @@
+{
+  "name": "tsconfig-paths-esm-loader",
+  "version": "1.0.0",
+  "description": "A custom loader for ESM projects that adds support for tsconfig paths",
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "paths",
+    "esm",
+    "modules",
+    "loader",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/Xmaxer/tsconfig-paths-esm-loader#readme",
+  "bugs": {
+    "url": "https://github.com/Xmaxer/tsconfig-paths-esm-loader/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xmaxer/tsconfig-paths-esm-loader.git"
+  },
+  "license": "MIT",
+  "author": "Kevin Jakubauskas",
+  "type": "module",
+  "main": "loader.mjs",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "postbuild": "cp package.json dist",
+    "build-publish": "yarn run version:bump && yarn run build && yarn run publish:nexus",
+    "lint": "eslint . --ext .js,.ts,.mts,.mjs --max-warnings 0 --fix && prettier --write . && tsc --noEmit true && git add .",
+    "publish:": "cd ./dist && npm publish",
+    "version:bump": "npm version patch --git-tag-version false --commit-hooks false"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "4.0.0",
+    "@typescript-eslint/eslint-plugin": "5.45.0",
+    "@typescript-eslint/parser": "5.45.0",
+    "eslint": "8.29.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "pre-commit": "1.2.2",
+    "prettier": "2.8.0",
+    "prettier-plugin-packagejson": "2.3.0",
+    "typescript": "4.9.3"
+  },
+  "peerDependencies": {
+    "ts-node": ">=10",
+    "tsconfig-paths": ">=4"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
+}
