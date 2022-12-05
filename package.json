@@ -1,6 +1,6 @@
 {
   "name": "tsconfig-paths-esm-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A custom loader for ESM projects that adds support for tsconfig paths",
   "keywords": [
     "tsconfig",
@@ -25,8 +25,8 @@
   "main": "loader.mjs",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "postbuild": "cp package.json dist",
-    "build-publish": "yarn run version:bump && yarn run build && yarn run publish:nexus",
+    "postbuild": "cp package.json README.md dist",
+    "build-publish": "yarn run version:bump && yarn run build && yarn run publish",
     "lint": "eslint . --ext .js,.ts,.mts,.mjs --max-warnings 0 --fix && prettier --write . && tsc --noEmit true && git add .",
     "publish:": "cd ./dist && npm publish",
     "version:bump": "npm version patch --git-tag-version false --commit-hooks false"
